@@ -4,6 +4,9 @@ import 'package:crypto_provider/ui/ui_helper/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 // 1. provider
 // 2. theme
 // 3. multilingual
@@ -27,23 +30,47 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeProvider>(
       builder: (context, themeProvider, child) {
         return MaterialApp(
+          locale: Locale('fa', ''),
           themeMode: themeProvider.themeMode,
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
           debugShowCheckedModeBanner: false,
-          home: Directionality(
-            textDirection: TextDirection.ltr,
-            child: Scaffold(
-              appBar: AppBar(
-                actions: [ThemeSwitcher()],
-                title: Text('Crypto'),
-                centerTitle: true,
-              ),
-              body: Container(),
-            ),
-          ),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          // supportedLocales: [
+          //   Locale('en'), // English
+          //   Locale('es'), // Spanish
+          // ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: const HomeScreen(),
         );
       },
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(loc.appName),
+        centerTitle: true,
+        actions: const [ThemeSwitcher()],
+      ),
+      body: Center(
+        child: Text(
+          loc.helloWorld,
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+      ),
     );
   }
 }
