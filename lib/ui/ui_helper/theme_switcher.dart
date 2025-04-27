@@ -13,6 +13,7 @@ class ThemeSwitcher extends StatelessWidget {
       themeProvider.isDarkMode
           ? CupertinoIcons.moon_fill
           : CupertinoIcons.sun_max_fill,
+      color: Colors.white,
     );
     return IconButton(
       onPressed: () {

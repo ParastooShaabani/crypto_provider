@@ -1,6 +1,6 @@
+import 'package:crypto_provider/ui/main_wrapper.dart';
 import 'package:crypto_provider/ui/providers/theme_provider.dart';
 import 'package:crypto_provider/ui/theme/my_theme.dart';
-import 'package:crypto_provider/ui/ui_helper/theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // 1. provider
 // 2. theme
 // 3. multilingual
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -46,31 +47,12 @@ class MyApp extends StatelessWidget {
           //   Locale('es'), // Spanish
           // ],
           supportedLocales: AppLocalizations.supportedLocales,
-          home: const HomeScreen(),
+          home: Directionality(
+            textDirection: TextDirection.ltr,
+            child: const MainWrapper(),
+          ),
         );
       },
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(loc.appName),
-        centerTitle: true,
-        actions: const [ThemeSwitcher()],
-      ),
-      body: Center(
-        child: Text(
-          loc.helloWorld,
-          style: Theme.of(context).textTheme.titleSmall,
-        ),
-      ),
     );
   }
 }

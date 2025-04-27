@@ -8,7 +8,7 @@ class MyThemes {
       titleLarge: GoogleFonts.ubuntu(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),
       bodySmall: GoogleFonts.ubuntu(color: Colors.white, fontSize: 15),
       labelSmall: GoogleFonts.ubuntu(color: Colors.white54, fontSize: 13),
-      titleSmall: GoogleFonts.ubuntu(color: Colors.white, fontSize: 40),
+      titleSmall: GoogleFonts.ubuntu(color: Colors.black, fontSize: 40),
 
     ),
     unselectedWidgetColor: Colors.white70,
