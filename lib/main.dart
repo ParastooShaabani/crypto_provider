@@ -1,5 +1,5 @@
 import 'package:crypto_provider/ui/main_wrapper.dart';
-import 'package:crypto_provider/ui/providers/theme_provider.dart';
+import 'package:crypto_provider/providers/theme_provider.dart';
 import 'package:crypto_provider/ui/theme/my_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
